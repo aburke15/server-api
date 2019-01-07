@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="AppData\Dtos" />
-    <Folder Include="AppData\Interfaces" />
     <Folder Include="AppData\ModelConfigurations" />
     <Folder Include="AppData\Models" />
     <Folder Include="Services\GitHub\Implementations" />

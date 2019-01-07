@@ -1,6 +1,6 @@
 namespace ServerApi.AppData.Models
 {
-    public class GithubRepo : Entity
+    public class GitHub : Entity
     {
         public string CreatedAt { get; set; }
 
