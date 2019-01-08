@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,11 +14,8 @@ namespace ServerApi.AppData.Implementations
         protected Repository(ServerApiContext context) 
             => _context = context;
 
-        public void Add(T entity)
-        {
-            _context.Set<T>().Add(entity);
-        }
-
+        public void Add(T entity) 
+            => _context.Set<T>().Add(entity);
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
@@ -33,54 +31,43 @@ namespace ServerApi.AppData.Implementations
             await _context.Set<T>().AddRangeAsync(entities);
         }
 
-        public IEnumerable<T> Get()
-        {
-            return _context.Set<T>().ToList();
-        }
+        public IEnumerable<T> Get() 
+            => _context.Set<T>().ToList();
 
         public async Task<IEnumerable<T>> GetAsync()
-        {
-            return await _context.Set<T>().ToListAsync();
-        }
+            => await _context.Set<T>().ToListAsync();
 
-        public T GetById(object key)
-        {
-            throw new System.NotImplementedException();
-        }
+        public T GetById(object key) 
+            => _context.Set<T>().Find(key);
 
-        public Task<T> GetByIdAsync(object key)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<T> GetByIdAsync(object key) 
+            => await _context.Set<T>().FindAsync(key);
 
-        public void Remove(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Remove(T entity) 
+            => _context.Set<T>().Remove(entity);
 
-        public void RemoveRange(IEnumerable<T> entities)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void RemoveRange(IEnumerable<T> entities) 
+            => _context.Set<T>().RemoveRange(entities);
 
-        public void Update(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Update(T entity) 
+            => _context.Set<T>().Update(entity);
 
-        public void UpdateRange(IEnumerable<T> entities)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void UpdateRange(IEnumerable<T> entities) 
+            => _context.Set<T>().UpdateRange(entities);
 
-        public void SaveChanges()
-        {
-            throw new System.NotImplementedException();
-        }
+        public void SaveChanges() 
+            => _context.SaveChanges();
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync() 
+            => await _context.SaveChangesAsync();
+
+        private static void ValidateKey(object key)
         {
-            throw new System.NotImplementedException();
+            if (key is null) 
+                throw new ArgumentNullException(nameof(key));
+            
+            if (key.GetType() != typeof(int))
+                throw new InvalidOperationException($"Key ID must be of type {typeof(int)}");
         }
     }
 }
