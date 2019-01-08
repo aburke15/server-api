@@ -8,12 +8,15 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.13" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="AppData\Dtos" />
     <Folder Include="AppData\ModelConfigurations" />
     <Folder Include="AppData\Models" />
+    <Folder Include="Infrastructure" />
     <Folder Include="Services\GitHub\Implementations" />
     <Folder Include="Services\GitHub\Interfaces" />
   </ItemGroup>

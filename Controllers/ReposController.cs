@@ -15,14 +15,14 @@ namespace ServerApi.Controllers
         private const string RepoKey = "Github Repos";
 
         private readonly IMemoryCache _cache;
-        //private readonly IGithubRepoRepository GithubRepo;
+        //private readonly IGithubRepoRepository _gitHubRepository;
 
         public ReposController(
             IMemoryCache cache)
-            //IGithubRepoRepository githubRepo)
+            //IGitHubRepoRepository gitHubRepository)
         {
             _cache = cache;
-            //GithubRepo = githubRepo;
+            //GitHubRepository = gitHubRepository;
         }
 
         [HttpGet]
