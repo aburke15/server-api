@@ -8,17 +8,17 @@ namespace ServerApi.AppData.Implementations
     {
         private const string CreateTable = @"
             CREATE TABLE IF NOT EXISTS GitHub (
-            ID int NOT NULL AUTO_INCREMENT,
-            created_on timestamp NOT NULL,
-            created_at varchar(100) NOT NULL,
-            description varchar(500) NULL,
-            forks int NULL,
-            html_url varchar(200) NOT NULL,
-            language varchar(25) NULL,
-            name varchar(50) NOT NULL,
-            PRIMARY KEY(ID));";
+            Id int NOT NULL AUTO_INCREMENT,
+            CreatedOn timestamp NOT NULL,
+            CreatedAt varchar(100) NOT NULL,
+            Description varchar(500) NULL,
+            Forks int NULL,
+            HtmlUrl varchar(200) NOT NULL,
+            ProgrammingLanguage varchar(25) NULL,
+            RepoName varchar(50) NOT NULL,
+            PRIMARY KEY(Id));";
         private const string DropTable = "DROP TABLE IF EXISTS GitHub;";
-
+        
         private readonly ServerApiContext _context;
 
         public GitHubRepository(ServerApiContext context) 
