@@ -18,9 +18,9 @@ namespace ServerApi.AppData.Dtos
         public string HtmlUrl { get; set; }
 
         [JsonProperty(PropertyName = "language")]
-        public string Language { get; set; }
+        public string ProgrammingLanguage { get; set; }
 
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string RepoName { get; set; }
     }
 }

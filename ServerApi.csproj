@@ -27,8 +27,6 @@
     <Folder Include="AppData\Dtos" />
     <Folder Include="AppData\ModelConfigurations" />
     <Folder Include="AppData\Models" />
-    <Folder Include="Services\GitHub\Implementations" />
-    <Folder Include="Services\GitHub\Interfaces" />
   </ItemGroup>
 
 </Project>

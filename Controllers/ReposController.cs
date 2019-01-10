@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using ServerApi.AppData.Dtos;
 using ServerApi.AppData.Implementations;
+using ServerApi.AppData.Interfaces;
 using ServerApi.AppData.Models;
 
 namespace ServerApi.Controllers
@@ -12,43 +15,42 @@ namespace ServerApi.Controllers
     [Produces("application/json")]
     public class ReposController : ControllerBase
     {
-        private const string RepoKey = "Github Repos";
+        private const string RepoKey = "GithubRepos";
 
         private readonly IMemoryCache _cache;
-        //private readonly IGithubRepoRepository _gitHubRepository;
+        private readonly IGitHubRepository _gitHubRepository;
 
         public ReposController(
-            IMemoryCache cache)
-            //IGitHubRepoRepository gitHubRepository)
+            IMemoryCache cache,
+            IGitHubRepository gitHubRepository)
         {
             _cache = cache;
-            //GitHubRepository = gitHubRepository;
+            _gitHubRepository = gitHubRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetProjects()
         {
-            throw new NotImplementedException();
-//            if (Cache.TryGetValue(RepoKey, out IEnumerable<GithubDataDto> projects))
-//                return Ok(projects);
-//            
-//            var repos = (await GitHubRepository.GetAsync())
-//                .Select(x => new GithubDataDto
-//                {
-//                    Id = x.Id,
-//                    CreatedOn = x.CreatedOn,
-//                    CreatedAt = x.CreatedAt,
-//                    Description = x.Description,
-//                    Forks = x.Forks,
-//                    HtmlUrl = x.HtmlUrl,
-//                    ProgrammingLanguage = x.ProgrammingLanguage,
-//                    RepoName = x.RepoName
-//                })
-//                .OrderBy(x => x.CreatedOn);
-//
-//            Cache.Set(RepoKey, repos, TimeSpan.FromDays(5));
-//
-//            return Ok(repos);
+            if (_cache.TryGetValue(RepoKey, out IEnumerable<GitHubDto> projects))
+                return Ok(projects);
+            
+            var repos = (await _gitHubRepository.GetAsync())
+                .Select(x => new GitHubDto
+                {
+                    Id = x.Id,
+                    CreatedOn = x.CreatedOn,
+                    CreatedAt = x.CreatedAt,
+                    Description = x.Description,
+                    Forks = x.Forks,
+                    HtmlUrl = x.HtmlUrl,
+                    ProgrammingLanguage = x.ProgrammingLanguage,
+                    RepoName = x.RepoName
+                })
+                .OrderBy(x => x.CreatedOn);
+
+            _cache.Set(RepoKey, repos, TimeSpan.FromDays(5));
+
+            return Ok(repos);
         }
     }
 }
