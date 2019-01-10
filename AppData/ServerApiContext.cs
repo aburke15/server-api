@@ -1,16 +1,20 @@
 using Microsoft.EntityFrameworkCore;
+using ServerApi.AppData.ModelConfigurations;
+using ServerApi.AppData.Models;
 
 namespace ServerApi.AppData
 {
     public class ServerApiContext : DbContext
     {
-        protected ServerApiContext(DbContextOptions options)
+        public ServerApiContext(DbContextOptions options)
             : base(options)
         { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new GitHubConfiguration());
         }
+        
+        public virtual DbSet<GitHub> GitHub { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace ServerApi.AppData.Implementations
             CREATE TABLE IF NOT EXISTS GitHub (
             Id int NOT NULL AUTO_INCREMENT,
             CreatedOn timestamp NOT NULL,
-            CreatedAt varchar(100) NOT NULL,
+            CreatedAt varchar(100) NULL,
             Description varchar(500) NULL,
             Forks int NULL,
-            HtmlUrl varchar(200) NOT NULL,
-            ProgrammingLanguage varchar(25) NULL,
-            RepoName varchar(50) NOT NULL,
+            HtmlUrl varchar(200) NULL,
+            Language varchar(25) NULL,
+            Name varchar(50) NULL,
             PRIMARY KEY(Id));";
         private const string DropTable = "DROP TABLE IF EXISTS GitHub;";
         

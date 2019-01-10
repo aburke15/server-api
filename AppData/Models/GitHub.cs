@@ -10,8 +10,8 @@ namespace ServerApi.AppData.Models
 
         public string HtmlUrl { get; set; }
 
-        public string ProgrammingLanguage { get; set; }
+        public string Language { get; set; }
 
-        public string RepoName { get; set; }
+        public string Name { get; set; }
     }
 }

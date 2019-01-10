@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServerApi.AppData;
+using ServerApi.AppData.Implementations;
+using ServerApi.AppData.Interfaces;
+using ServerApi.Services.GitHub.Implementations;
+using ServerApi.Services.GitHub.Interfaces;
 
 namespace ServerApi
 {
@@ -24,27 +28,37 @@ namespace ServerApi
         {
             services.AddMemoryCache();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            services.AddCors(options =>
+                options.AddPolicy("AllowSpecificOrigin",
+                builder =>
+                {
+                    builder.WithOrigins("http://me.aburke.io");
+                })
+            );
 
             services.AddDbContext<ServerApiContext>(
                 options => options.UseMySQL(
                     _configuration.GetConnectionString("CoffeeLakeConnection"))
             );
+            
+            // service types
+            services.AddHostedService<GitHubHostedService>();
+            services.AddScoped<IGitHubScopedProcessingService, GitHubScopedProcessingService>();
+            services.AddScoped<IGitHubApiService, GitHubApiService>();
+            
+            // repository types
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IGitHubRepository, GitHubRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
 
-            //app.UseHttpsRedirection();
+            app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
         }
     }

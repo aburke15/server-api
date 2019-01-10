@@ -31,10 +31,10 @@ namespace ServerApi.AppData.ModelConfigurations
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.Property(x => x.ProgrammingLanguage)
+            builder.Property(x => x.Language)
                 .HasMaxLength(25);
 
-            builder.Property(x => x.RepoName)
+            builder.Property(x => x.Name)
                 .HasMaxLength(50)
                 .IsRequired();
         }

@@ -25,12 +25,12 @@ namespace ServerApi.Services.GitHub.Implementations
             var repos = (_gitHubApiService.GetRepositories())
                 .Select(x => new
                 {
-                    x.CreatedAt,
-                    x.Description,
-                    x.Forks,
-                    x.HtmlUrl,
-                    x.ProgrammingLanguage,
-                    x.RepoName
+                    CreatedAt = x.CreatedAt,
+                    Description = x.Description,
+                    Forks = x.Forks,
+                    HtmlUrl = x.HtmlUrl,
+                    Language = x.Language,
+                    Name = x.Name
                 })
                 .OrderByDescending(x => x.CreatedAt);
 
@@ -42,8 +42,8 @@ namespace ServerApi.Services.GitHub.Implementations
                     Description = repo.Description,
                     Forks = repo.Forks,
                     HtmlUrl = repo.HtmlUrl,
-                    ProgrammingLanguage = repo.ProgrammingLanguage,
-                    RepoName = repo.RepoName
+                    Language = repo.Language,
+                    Name = repo.Name
                 };
                 
                 _gitHubRepository.Add(gitHub);

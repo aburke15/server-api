@@ -43,8 +43,8 @@ namespace ServerApi.Controllers
                     Description = x.Description,
                     Forks = x.Forks,
                     HtmlUrl = x.HtmlUrl,
-                    ProgrammingLanguage = x.ProgrammingLanguage,
-                    RepoName = x.RepoName
+                    Language = x.Language,
+                    Name = x.Name
                 })
                 .OrderBy(x => x.CreatedOn);
 
