@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ServerApi.AppData.Interfaces;
 using ServerApi.AppData.Models;
+using ServerApi.Entities;
 
 namespace ServerApi.AppData.Implementations
 {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ServerApi.AppData.ModelConfigurations;
 using ServerApi.AppData.Models;
 
-namespace ServerApi.AppData
+namespace ServerApi.Entities
 {
     public class ServerApiContext : DbContext
     {

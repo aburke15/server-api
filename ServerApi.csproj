@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppData\Dtos" />
-    <Folder Include="AppData\ModelConfigurations" />
-    <Folder Include="AppData\Models" />
+    <Folder Include="ServerApi.Entities\Dtos" />
+    <Folder Include="ServerApi.Entities\ModelConfigurations" />
+    <Folder Include="ServerApi.Entities\Models" />
   </ItemGroup>
 
 </Project>

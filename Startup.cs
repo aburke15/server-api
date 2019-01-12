@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ServerApi.AppData;
 using ServerApi.AppData.Implementations;
 using ServerApi.AppData.Interfaces;
+using ServerApi.Entities;
 using ServerApi.Services.GitHub.Implementations;
 using ServerApi.Services.GitHub.Interfaces;
 
