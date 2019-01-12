@@ -6,6 +6,9 @@ namespace ServerApi.AppData
 {
     public class ServerApiContext : DbContext
     {
+        public ServerApiContext()
+        { }
+        
         public ServerApiContext(DbContextOptions options)
             : base(options)
         { }
