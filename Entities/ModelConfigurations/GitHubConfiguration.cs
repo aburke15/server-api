@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ServerApi.AppData.Models;
+using ServerApi.Entities.Models;
 
-namespace ServerApi.AppData.ModelConfigurations
+namespace ServerApi.Entities.ModelConfigurations
 {
     public class GitHubConfiguration : IEntityTypeConfiguration<GitHub>
     {

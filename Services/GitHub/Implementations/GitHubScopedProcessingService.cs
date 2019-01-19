@@ -1,5 +1,5 @@
 using System.Linq;
-using ServerApi.AppData.Interfaces;
+using ServerApi.Entities.Interfaces;
 using ServerApi.Services.GitHub.Interfaces;
 
 namespace ServerApi.Services.GitHub.Implementations
@@ -36,7 +36,7 @@ namespace ServerApi.Services.GitHub.Implementations
 
             foreach (var repo in repos)
             {
-                var gitHub = new AppData.Models.GitHub
+                var gitHub = new Entities.Models.GitHub
                 {
                     CreatedAt = repo.CreatedAt.ToLongDateString(),
                     Description = repo.Description,

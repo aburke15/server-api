@@ -1,6 +1,6 @@
-using ServerApi.AppData.Models;
+using ServerApi.Entities.Models;
 
-namespace ServerApi.AppData.Interfaces
+namespace ServerApi.Entities.Interfaces
 {
     public interface IGitHubRepository : IRepository<GitHub>
     {

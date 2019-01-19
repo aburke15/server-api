@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ServerApi.AppData;
-using ServerApi.AppData.Implementations;
-using ServerApi.AppData.Interfaces;
 using ServerApi.Entities;
+using ServerApi.Entities.Implementations;
+using ServerApi.Entities.Interfaces;
 using ServerApi.Services.GitHub.Implementations;
 using ServerApi.Services.GitHub.Interfaces;
 
@@ -34,7 +33,7 @@ namespace ServerApi
                 })
             );
 
-            services.AddDbContext<ServerApiContext>(
+            services.AddDbContext<ServerApiDbContext>(
                 options => options.UseMySQL(
                     _configuration.GetConnectionString("CoffeeLakeConnection"))
             );

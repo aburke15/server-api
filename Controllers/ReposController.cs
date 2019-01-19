@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using ServerApi.AppData.Dtos;
-using ServerApi.AppData.Implementations;
-using ServerApi.AppData.Interfaces;
-using ServerApi.AppData.Models;
+using ServerApi.Entities.Interfaces;
 
 namespace ServerApi.Controllers
 {

@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using ServerApi.AppData.ModelConfigurations;
-using ServerApi.AppData.Models;
+using ServerApi.Entities.ModelConfigurations;
+using ServerApi.Entities.Models;
 
 namespace ServerApi.Entities
 {
-    public class ServerApiContext : DbContext
+    public class ServerApiDbContext : DbContext
     {
-        public ServerApiContext()
+        public ServerApiDbContext()
         { }
         
-        public ServerApiContext(DbContextOptions options)
+        public ServerApiDbContext(DbContextOptions options)
             : base(options)
         { }
 

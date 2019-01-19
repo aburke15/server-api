@@ -8,7 +8,8 @@ namespace ServerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller 
+        
     {
         // GET api/values
         [HttpGet]

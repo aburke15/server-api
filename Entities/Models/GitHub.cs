@@ -1,4 +1,4 @@
-namespace ServerApi.AppData.Models
+namespace ServerApi.Entities.Models
 {
     public class GitHub : Entity
     {

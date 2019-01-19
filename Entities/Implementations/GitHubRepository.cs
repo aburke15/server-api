@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using ServerApi.AppData.Interfaces;
-using ServerApi.AppData.Models;
-using ServerApi.Entities;
+using ServerApi.Entities.Interfaces;
+using ServerApi.Entities.Models;
 
-namespace ServerApi.AppData.Implementations
+namespace ServerApi.Entities.Implementations
 {
     public class GitHubRepository : Repository<GitHub>, IGitHubRepository
     {
@@ -20,9 +19,9 @@ namespace ServerApi.AppData.Implementations
             PRIMARY KEY(Id));";
         private const string DropTable = "DROP TABLE IF EXISTS GitHub;";
         
-        private readonly ServerApiContext _context;
+        private readonly ServerApiDbContext _context;
 
-        public GitHubRepository(ServerApiContext context) 
+        public GitHubRepository(ServerApiDbContext context) 
             : base(context) => _context = context;
 
         public void DropGitHubTable()

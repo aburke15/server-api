@@ -3,34 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ServerApi.AppData.Interfaces;
-using ServerApi.Entities;
+using ServerApi.Entities.Interfaces;
 
-namespace ServerApi.AppData.Implementations
+namespace ServerApi.Entities.Implementations
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ServerApiContext _context;
+        private readonly ServerApiDbContext _context;
 
-        protected Repository(ServerApiContext context) 
+        protected Repository(ServerApiDbContext context) 
             => _context = context;
 
         public void Add(T entity) 
             => _context.Set<T>().Add(entity);
+        
         public async Task AddAsync(T entity)
-        {
-            await _context.Set<T>().AddAsync(entity);
-        }
+            => await _context.Set<T>().AddAsync(entity);
 
         public void AddRange(IEnumerable<T> entities)
-        {
-            _context.Set<T>().AddRange(entities);
-        }
+            => _context.Set<T>().AddRange(entities);
 
         public async Task AddRangeAsync(IEnumerable<T> entities)
-        {
-            await _context.Set<T>().AddRangeAsync(entities);
-        }
+            => await _context.Set<T>().AddRangeAsync(entities);
 
         public IEnumerable<T> Get() 
             => _context.Set<T>().ToList();
