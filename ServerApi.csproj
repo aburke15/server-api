@@ -31,6 +31,7 @@
     <Folder Include="Entities\Dtos" />
     <Folder Include="Entities\ModelConfigurations" />
     <Folder Include="Entities\Models" />
+    <Folder Include="Entities\Repositories" />
   </ItemGroup>
 
 </Project>

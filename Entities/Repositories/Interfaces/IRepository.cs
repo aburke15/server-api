@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ServerApi.Entities.Interfaces
+namespace ServerApi.Entities.Repositories.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {
@@ -21,16 +23,22 @@ namespace ServerApi.Entities.Interfaces
 
         Task<TEntity> GetByIdAsync(object key);
 
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression);
+
         void Remove(TEntity entity);
+
+        Task RemoveAsync(TEntity entity);
 
         void RemoveRange(IEnumerable<TEntity> entities);
 
+        Task RemoveRangeAsync(IEnumerable<TEntity> entities);
+
         void Update(TEntity entity);
+
+        Task UpdateAsync(TEntity entity);
 
         void UpdateRange(IEnumerable<TEntity> entities);
 
-        void SaveChanges();
-        
-        Task SaveChangesAsync();
+        Task UpdateRangeAsync(IEnumerable<TEntity> entities);
     }
 }

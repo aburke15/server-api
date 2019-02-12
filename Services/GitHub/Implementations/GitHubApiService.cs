@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
-using ServerApi.AppData.Dtos;
+using ServerApi.Entities.Dtos;
 using ServerApi.Services.GitHub.Interfaces;
 
 namespace ServerApi.Services.GitHub.Implementations
@@ -15,7 +15,7 @@ namespace ServerApi.Services.GitHub.Implementations
         public GitHubApiService(IConfiguration configuration) 
             => _configuration = configuration;
 
-        public IEnumerable<GitHubRepoDto> GetRepositories()
+        public IEnumerable<GitHubRepoDto> GetGitHubRepositories()
         {
             var client = new RestClient(new Uri(
                 _configuration.GetValue<string>(GitHubApiRepo)

@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServerApi.Entities;
-using ServerApi.Entities.Implementations;
-using ServerApi.Entities.Interfaces;
+using ServerApi.Entities.Repositories.Implementations;
+using ServerApi.Entities.Repositories.Interfaces;
 using ServerApi.Services.GitHub.Implementations;
 using ServerApi.Services.GitHub.Interfaces;
 

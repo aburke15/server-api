@@ -1,6 +1,6 @@
 using System;
 
-namespace ServerApi.AppData.Dtos
+namespace ServerApi.Entities.Dtos
 {
     public class GitHubDto
     {

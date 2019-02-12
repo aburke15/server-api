@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using ServerApi.AppData.Dtos;
+using ServerApi.Entities.Dtos;
 
 namespace ServerApi.Services.GitHub.Interfaces
 {
     public interface IGitHubApiService
     {
-        IEnumerable<GitHubRepoDto> GetRepositories();
+        IEnumerable<GitHubRepoDto> GetGitHubRepositories();
     }
 }

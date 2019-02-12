@@ -7,7 +7,7 @@ namespace ServerApi.Entities.Models
         protected Entity() 
             => CreatedOn = DateTime.Now;
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public DateTime CreatedOn { get; private set; }
     }

@@ -15,7 +15,7 @@ namespace ServerApi.Entities
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new GitHubConfiguration());
+            builder.ApplyConfiguration(new GitHubEntityTypeConfiguration());
         }
         
         public virtual DbSet<GitHub> GitHub { get; set; }

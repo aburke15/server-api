@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace ServerApi.AppData.Dtos
+namespace ServerApi.Entities.Dtos
 {
     public class GitHubRepoDto
     {

@@ -1,5 +1,5 @@
 using System.Linq;
-using ServerApi.Entities.Interfaces;
+using ServerApi.Entities.Repositories.Interfaces;
 using ServerApi.Services.GitHub.Interfaces;
 
 namespace ServerApi.Services.GitHub.Implementations
@@ -21,9 +21,10 @@ namespace ServerApi.Services.GitHub.Implementations
         {
             _gitHubRepository.DropGitHubTable();
             _gitHubRepository.CreateGitHubTable();
+            _gitHubRepository.AddIndexOnCreatedAt();
 
-            var repos = (_gitHubApiService.GetRepositories())
-                .Select(x => new
+            var repos = (_gitHubApiService.GetGitHubRepositories())
+                .Select(x => new Entities.Models.GitHub
                 {
                     CreatedAt = x.CreatedAt,
                     Description = x.Description,
@@ -31,25 +32,9 @@ namespace ServerApi.Services.GitHub.Implementations
                     HtmlUrl = x.HtmlUrl,
                     Language = x.Language,
                     Name = x.Name
-                })
-                .OrderByDescending(x => x.CreatedAt);
-
-            foreach (var repo in repos)
-            {
-                var gitHub = new Entities.Models.GitHub
-                {
-                    CreatedAt = repo.CreatedAt.ToLongDateString(),
-                    Description = repo.Description,
-                    Forks = repo.Forks,
-                    HtmlUrl = repo.HtmlUrl,
-                    Language = repo.Language,
-                    Name = repo.Name
-                };
-                
-                _gitHubRepository.Add(gitHub);
-            }
-
-            _gitHubRepository.SaveChanges();
+                });
+            
+            _gitHubRepository.AddRange(repos);
         }
     }
 }

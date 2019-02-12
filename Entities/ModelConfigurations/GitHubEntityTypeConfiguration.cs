@@ -4,7 +4,7 @@ using ServerApi.Entities.Models;
 
 namespace ServerApi.Entities.ModelConfigurations
 {
-    public class GitHubConfiguration : IEntityTypeConfiguration<GitHub>
+    public class GitHubEntityTypeConfiguration : IEntityTypeConfiguration<GitHub>
     {
         public void Configure(EntityTypeBuilder<GitHub> builder)
         {

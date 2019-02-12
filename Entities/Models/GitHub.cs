@@ -1,8 +1,10 @@
+using System;
+
 namespace ServerApi.Entities.Models
 {
     public class GitHub : Entity
     {
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public string Description { get; set; }
 

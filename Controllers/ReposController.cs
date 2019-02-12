@@ -4,16 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using ServerApi.AppData.Dtos;
-using ServerApi.Entities.Interfaces;
+using ServerApi.Entities.Dtos;
+using ServerApi.Entities.Repositories.Interfaces;
 
 namespace ServerApi.Controllers
 {
-    [Route("api/[controller]")]
     [Produces("application/json")]
-    public class ReposController : ControllerBase
+    public class ReposController : BaseApiController
     {
-        private const string RepoKey = "GithubRepos";
+        private const string RepoKey = "GitHubRepos";
 
         private readonly IMemoryCache _cache;
         private readonly IGitHubRepository _gitHubRepository;
@@ -27,24 +26,23 @@ namespace ServerApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProjects()
+        public async Task<IActionResult> GetGitHubProjects()
         {
             if (_cache.TryGetValue(RepoKey, out IEnumerable<GitHubDto> projects))
                 return Ok(projects);
-            
-            var repos = (await _gitHubRepository.GetAsync())
+
+            var repos = (await _gitHubRepository.GetByCreatedAtDescendingAsync())
                 .Select(x => new GitHubDto
                 {
                     Id = x.Id,
                     CreatedOn = x.CreatedOn,
-                    CreatedAt = x.CreatedAt,
+                    CreatedAt = x.CreatedAt.ToLongDateString(),
                     Description = x.Description,
                     Forks = x.Forks,
                     HtmlUrl = x.HtmlUrl,
                     Language = x.Language,
                     Name = x.Name
-                })
-                .OrderBy(x => x.CreatedOn);
+                });
 
             _cache.Set(RepoKey, repos, TimeSpan.FromDays(5));
 
